@@ -31,9 +31,11 @@ public class Loader
 
         do {
             ginger.meow();
-        } while (ginger.getWeight() > 0);
+        } while (ginger.getWeight() > 1000.0);
 
         System.out.println(ginger.getStatus());
+
+        //In case this solution would be inappropriate, create a getter for minWeight
 
 
 
