@@ -17,8 +17,6 @@ public class Cat
 
     }
 
-    public Double getFoodAmount() { return foodAmount; }
-
     public void toilet()
     {
         weight = weight - 20;
@@ -34,7 +32,10 @@ public class Cat
     public void feed(Double amount)
     {
         weight = weight + amount;
+        foodAmount = amount;
     }
+
+    public  Double getFoodAmount() { return foodAmount; }
 
     public void drink(Double amount)
     {

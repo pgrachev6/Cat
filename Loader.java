@@ -22,20 +22,21 @@ public class Loader
         tim.feed(1000.0);
         System.out.println(tim.getStatus());
 
-        // Cat david overfeeding
+        // Cat david overfeeding and checkin food amount
 
         dan.feed(8000.0);
+        System.out.println(dan.getFoodAmount());
         System.out.println(dan.getStatus());
+
 
         // Meowing cat ginger till the death
 
         do {
             ginger.meow();
         } while (ginger.getWeight() > 1000.0);
-
         System.out.println(ginger.getStatus());
 
-        //In case this solution would be inappropriate, create a getter for minWeight
+
 
 
 
