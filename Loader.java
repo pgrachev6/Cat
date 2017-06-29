@@ -9,10 +9,12 @@ public class Loader
         Cat tim = new Cat();
         Cat ginger = new Cat();
 
-        // All cats weight check
-
         System.out.println(dan.getWeight());
         System.out.println(david.getWeight());
+        System.out.println("difference: " + Cat.getWeightDifference(dan, david));
+
+        // All cats weight check
+
         System.out.println(peter.getWeight());
         System.out.println(tim.getWeight());
         System.out.println(ginger.getWeight());
@@ -35,6 +37,8 @@ public class Loader
             ginger.meow();
         } while (ginger.getWeight() > 1000.0);
         System.out.println(ginger.getStatus());
+
+        System.out.println("Number of cats are: " + Cat.getCount());
 
 
 
