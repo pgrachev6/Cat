@@ -7,6 +7,7 @@ public class Cat
 
     private Double minWeight;
     private Double maxWeight;
+    private static Integer counter = 0;
 
     public Cat()
     {
@@ -14,7 +15,19 @@ public class Cat
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        counter++;
 
+    }
+
+    public static Integer getCount()
+    {
+        return  counter;
+    }
+
+    public static Double getWeightDifference(Cat cat1, Cat cat2)
+    {
+        Double difference = Math.abs(cat1.getWeight() - cat2.getWeight());
+        return difference;
     }
 
     public void toilet()
@@ -26,6 +39,12 @@ public class Cat
     public void meow()
     {
         weight = weight - 1;
+        System.out.println("Meow");
+    }
+
+    public void meow(Double weight)
+    {
+        this.weight = this.weight - weight;
         System.out.println("Meow");
     }
 
@@ -50,9 +69,11 @@ public class Cat
     public String getStatus()
     {
         if(weight < minWeight) {
+            counter--;
             return "Dead";
         }
         else if(weight > maxWeight) {
+            counter--;
             return "Exploded";
         }
         else if(weight > originWeight) {
