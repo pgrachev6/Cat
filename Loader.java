@@ -24,7 +24,7 @@ public class Loader
         tim.feed(1000.0);
         System.out.println(tim.getStatus());
 
-        // Cat david overfeeding and checkin food amount
+        // Cat david overfeeding and checking food amount
 
         dan.feed(8000.0);
         System.out.println(dan.getFoodAmount());
@@ -36,8 +36,10 @@ public class Loader
         do {
             ginger.meow();
         } while (ginger.getWeight() > 1000.0);
+
         System.out.println(ginger.getStatus());
 
+        //Getting cats number after death or exploding
         System.out.println("Number of cats are: " + Cat.getCount());
 
 
