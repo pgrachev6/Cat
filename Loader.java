@@ -1,8 +1,27 @@
 
-public class Loader
-{
-    public static void main(String[] args)
-    {
+public class Loader {
+
+    public static void main(String[] args) {
+        //Set weight when creating a cat with help of a second constructor
+
+        Cat alisa = new Cat(1000.0);
+        System.out.println(alisa.getWeight());
+
+        //Creating a kitten
+
+        Cat jimmy = getKitten();
+        System.out.println(jimmy.getWeight());
+
+        //Creating a twin
+
+        Cat denis = new Cat();
+        Cat vaska = denis.createTwin();
+
+        System.out.println(denis.getStatus());
+        System.out.println(vaska.getStatus());
+
+        //Creating 5 cats
+
         Cat dan = new Cat();
         Cat david = new Cat();
         Cat peter = new Cat();
@@ -39,28 +58,15 @@ public class Loader
 
         System.out.println(ginger.getStatus());
 
-        //Getting cats number after death or exploding
-        System.out.println("Number of cats are: " + Cat.getCount());
+        //Getting cats number, including death or exploding
+        System.out.println("Number of cats: " + Cat.getCount());
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // kitten creation method
+    public static Cat getKitten()
+    {
+        Double randomWeight = 100.0 + 100.0 * Math.random();
+        Cat cat = new Cat(randomWeight);
+        return cat;
     }
 }
