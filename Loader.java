@@ -12,14 +12,6 @@ public class Loader {
         Cat jimmy = getKitten();
         System.out.println(jimmy.getWeight());
 
-        //Creating a twin
-
-        Cat denis = new Cat();
-        Cat vaska = denis.createTwin();
-
-        System.out.println(denis.getStatus());
-        System.out.println(vaska.getStatus());
-
         //Creating 5 cats
 
         Cat dan = new Cat();
@@ -27,6 +19,9 @@ public class Loader {
         Cat peter = new Cat();
         Cat tim = new Cat();
         Cat ginger = new Cat();
+
+        ginger.setName("WTF you want from me?");
+        System.out.println(ginger.getName());
 
         System.out.println(dan.getWeight());
         System.out.println(david.getWeight());
@@ -63,8 +58,7 @@ public class Loader {
     }
 
     // kitten creation method
-    public static Cat getKitten()
-    {
+    public static Cat getKitten() {
         Double randomWeight = 100.0 + 100.0 * Math.random();
         Cat cat = new Cat(randomWeight);
         return cat;
