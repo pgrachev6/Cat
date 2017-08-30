@@ -6,6 +6,7 @@ public class Loader {
 
         Cat alisa = new Cat(1000.0);
         System.out.println(alisa.getWeight());
+        System.out.println(alisa.getOriginWeight());
 
         //Creating a kitten
 
@@ -19,6 +20,10 @@ public class Loader {
         Cat peter = new Cat();
         Cat tim = new Cat();
         Cat ginger = new Cat();
+        Cat twinGinger = new Cat(ginger);
+
+        System.out.println(ginger.getWeight());
+        System.out.println(twinGinger.getWeight());
 
         ginger.setName("WTF you want from me?");
         System.out.println(ginger.getName());
@@ -32,6 +37,10 @@ public class Loader {
         System.out.println(peter.getWeight());
         System.out.println(tim.getWeight());
         System.out.println(ginger.getWeight());
+
+        System.out.println(tim.getWeight());
+        tim.toilet();
+        System.out.println(tim.getWeight());
 
         // Feeding cat tim
 
@@ -60,7 +69,7 @@ public class Loader {
     // kitten creation method
     public static Cat getKitten() {
         Double randomWeight = 100.0 + 100.0 * Math.random();
-        Cat cat = new Cat(randomWeight);
-        return cat;
+        Cat kitten = new Cat(randomWeight);
+        return kitten;
     }
 }

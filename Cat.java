@@ -9,6 +9,52 @@ public class Cat
     private static int counter;
     private String name;
 
+    public Cat() {
+        weight = 1500.0 + 3000.0 * Math.random();
+        originWeight = weight;
+        minWeight = 1000.0;
+        maxWeight = 9000.0;
+        counter++;
+    }
+
+    //cat creation constructor where you can set the weight
+    public Cat(double weight) {
+        this();
+        originWeight = weight;
+        this.weight = weight;
+    }
+
+    /*public Cat(String name, double foodAmount, double minWeight, double maxWeight, double weight, double originWeight) {
+        this.name = name;
+        this.foodAmount = foodAmount;
+        this.minWeight = minWeight;
+        this.maxWeight = maxWeight;
+        this.weight = weight;
+        this.originWeight = originWeight;
+        counter++;
+    } cat.getName(), cat.getFoodAmount(), cat.getOriginWeight(), cat.getMaxWeight(), cat.getMinWeight(), cat.getOriginWeight() */
+
+    //copy constructor
+    public Cat(Cat cat) {
+        this();
+    }
+
+    public static Cat twin(Cat cat) {
+        return cat.twin();
+    }
+
+    public Cat twin() {
+        return new Cat (this);
+    }
+
+    // set weight method
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
     public void setOriginWeight(double originWeight) {
         this.originWeight = originWeight;
     }
@@ -47,52 +93,6 @@ public class Cat
 
     public double getOriginWeight() {
         return originWeight;
-    }
-
-    public Cat() {
-        weight = 1500.0 + 3000.0 * Math.random();
-        originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
-        counter++;
-    }
-
-    //cat creation constructor where you can set the weight
-    public Cat(double weight) {
-        this();
-        originWeight = weight;
-        this.weight = weight;
-    }
-
-    public Cat(String name, double foodAmount, double minWeight, double maxWeight, double weight, double originWeight) {
-        this.name = name;
-        this.foodAmount = foodAmount;
-        this.minWeight = minWeight;
-        this.maxWeight = maxWeight;
-        this.weight = weight;
-        this.originWeight = originWeight;
-        counter++;
-    }
-
-    public Cat(Cat cat) {
-        this(cat.getName(), cat.getFoodAmount(), cat.getOriginWeight(), cat.getMaxWeight(), cat.getMinWeight(), cat.getOriginWeight());
-    }
-
-    public static Cat twin(Cat cat) {
-        return cat.twin();
-    }
-
-    public Cat twin() {
-        return new Cat (this);
-    }
-
-    // set weight method
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public double getWeight() {
-        return weight;
     }
 
       //toilet method
