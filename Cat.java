@@ -9,6 +9,30 @@ public class Cat
     private static int counter;
     private String name;
 
+    public void setOriginWeight(double originWeight) {
+        this.originWeight = originWeight;
+    }
+
+    public void setFoodAmount(double foodAmount) {
+        this.foodAmount = foodAmount;
+    }
+
+    public double getMinWeight() {
+        return minWeight;
+    }
+
+    public void setMinWeight(double minWeight) {
+        this.minWeight = minWeight;
+    }
+
+    public double getMaxWeight() {
+        return maxWeight;
+    }
+
+    public void setMaxWeight(double maxWeight) {
+        this.maxWeight = maxWeight;
+    }
+
     public String getName() {
         return name;
     }
@@ -21,6 +45,10 @@ public class Cat
         return counter;
     }
 
+    public double getOriginWeight() {
+        return originWeight;
+    }
+
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
@@ -29,9 +57,33 @@ public class Cat
         counter++;
     }
 
+    //cat creation constructor where you can set the weight
     public Cat(double weight) {
-        setWeight(weight);
+        this();
+        originWeight = weight;
+        this.weight = weight;
+    }
+
+    public Cat(String name, double foodAmount, double minWeight, double maxWeight, double weight, double originWeight) {
+        this.name = name;
+        this.foodAmount = foodAmount;
+        this.minWeight = minWeight;
+        this.maxWeight = maxWeight;
+        this.weight = weight;
+        this.originWeight = originWeight;
         counter++;
+    }
+
+    public Cat(Cat cat) {
+        this(cat.getName(), cat.getFoodAmount(), cat.getOriginWeight(), cat.getMaxWeight(), cat.getMinWeight(), cat.getOriginWeight());
+    }
+
+    public static Cat twin(Cat cat) {
+        return cat.twin();
+    }
+
+    public Cat twin() {
+        return new Cat (this);
     }
 
     // set weight method
@@ -45,7 +97,7 @@ public class Cat
 
       //toilet method
     public void toilet() {
-        setWeight(weight - 20);
+        setWeight (weight - 20);
         System.out.println("Don't forget to splash!");
     }
 
