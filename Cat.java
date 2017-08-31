@@ -17,26 +17,26 @@ public class Cat
         counter++;
     }
 
-    //cat creation constructor where you can set the weight
+    //cat creation constructor where you can set a weight
     public Cat(double weight) {
         this();
         originWeight = weight;
         this.weight = weight;
     }
 
-    /*public Cat(String name, double foodAmount, double minWeight, double maxWeight, double weight, double originWeight) {
+    public Cat(String name, double foodAmount, double minWeight, double maxWeight, double weight, double originWeight) {
         this.name = name;
         this.foodAmount = foodAmount;
         this.minWeight = minWeight;
         this.maxWeight = maxWeight;
         this.weight = weight;
-        this.originWeight = originWeight;
+        this.originWeight = weight;
         counter++;
-    } cat.getName(), cat.getFoodAmount(), cat.getOriginWeight(), cat.getMaxWeight(), cat.getMinWeight(), cat.getOriginWeight() */
+    }
 
     //copy constructor
     public Cat(Cat cat) {
-        this();
+        this(/*cat.getName(), cat.getFoodAmount(), cat.getOriginWeight(), cat.getMaxWeight(), cat.getMinWeight(), cat.getOriginWeight()*/);
     }
 
     public static Cat twin(Cat cat) {
@@ -55,6 +55,23 @@ public class Cat
     public double getWeight() {
         return weight;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName (String name) {
+        this.name = name;
+    }
+
+    public static int getCount() {
+        return counter;
+    }
+
+    public double getOriginWeight() {
+        return originWeight;
+    }
+
     public void setOriginWeight(double originWeight) {
         this.originWeight = originWeight;
     }
@@ -79,20 +96,12 @@ public class Cat
         this.maxWeight = maxWeight;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName (String name) {
-        this.name = name;
-    }
-
-    public static int getCount() {
+    public static int getCounter() {
         return counter;
     }
 
-    public double getOriginWeight() {
-        return originWeight;
+    public static void setCounter(int counter) {
+        Cat.counter = counter;
     }
 
       //toilet method
