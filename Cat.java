@@ -6,61 +6,94 @@ public class Cat
     private double foodAmount;
     private double minWeight;
     private double maxWeight;
-    private static int counter;
+    public static int counter;
     private String name;
 
     public Cat() {
-        weight = 1500.0 + 3000.0 * Math.random();
-        originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
-        counter++;
-    }
+        this(1500 + 3000 * Math.random());
+}
 
     //cat creation constructor where you can set a weight
     public Cat(double weight) {
-        this();
-        originWeight = weight;
-        this.weight = weight;
+        this(weight, weight, 100, 9000, 0);
     }
 
-    public Cat(String name, double foodAmount, double minWeight, double maxWeight, double weight, double originWeight) {
-        this.name = name;
-        this.foodAmount = foodAmount;
+    public Cat(double weight, double originWeight, double minWeight, double maxWeight, double foodAmount) {
+        this.weight = weight ;
+        this.originWeight = originWeight;
         this.minWeight = minWeight;
         this.maxWeight = maxWeight;
-        this.weight = weight;
-        this.originWeight = weight;
-        counter++;
+        this.foodAmount = foodAmount;
+        if(isAlive())
+            counter++;
     }
 
     //copy constructor
-    public Cat(Cat cat) {
-        this(/*cat.getName(), cat.getFoodAmount(), cat.getOriginWeight(), cat.getMaxWeight(), cat.getMinWeight(), cat.getOriginWeight()*/);
-    }
-
-    public static Cat twin(Cat cat) {
-        return cat.twin();
+    public Cat(Cat copy) {
+        this(copy.weight, copy.originWeight, copy.minWeight, copy.maxWeight, copy.getFoodAmount());
     }
 
     public Cat twin() {
-        return new Cat (this);
+        return new Cat(this);
+    }
+
+        public static Cat twin(Cat copy) {
+        return copy.twin();
     }
 
     // set weight method
-    public void setWeight(double weight) {
+    private void setWeight(double weight) {
+        if (isAlive()) {
+        }
         this.weight = weight;
+        if (!isAlive()) {
+            counter--;
+        }
+    }
+
+    private void addWeight(double weight) {
+        setWeight(getWeight() + weight);
     }
 
     public double getWeight() {
         return weight;
     }
 
+    private void setFoodAmount(double foodAmount) {
+        this.foodAmount = foodAmount;
+    }
+
+    private void addFoodAmount(double foodAmount) {
+        setFoodAmount(getFoodAmount() + foodAmount);
+    }
+
+    public double getFoodAmount() {
+        return foodAmount;
+    }
+
+    public void feed(double amount) {
+        addWeight(amount);
+        addFoodAmount(amount);
+    }
+
+
     public String getName() {
         return name;
     }
 
-    public void setName (String name) {
+    public double getOriginWeight() {
+        return originWeight;
+    }
+
+    public double getMinWeight() {
+        return minWeight;
+    }
+
+    public double getMaxWeight() {
+        return maxWeight;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -68,83 +101,44 @@ public class Cat
         return counter;
     }
 
-    public double getOriginWeight() {
-        return originWeight;
-    }
-
-    public void setOriginWeight(double originWeight) {
-        this.originWeight = originWeight;
-    }
-
-    public void setFoodAmount(double foodAmount) {
-        this.foodAmount = foodAmount;
-    }
-
-    public double getMinWeight() {
-        return minWeight;
-    }
-
-    public void setMinWeight(double minWeight) {
-        this.minWeight = minWeight;
-    }
-
-    public double getMaxWeight() {
-        return maxWeight;
-    }
-
-    public void setMaxWeight(double maxWeight) {
-        this.maxWeight = maxWeight;
-    }
-
-    public static int getCounter() {
-        return counter;
-    }
-
-    public static void setCounter(int counter) {
-        Cat.counter = counter;
-    }
-
       //toilet method
     public void toilet() {
-        setWeight (weight - 20);
-        System.out.println("Don't forget to splash!");
+        if (isAlive()) {
+            addWeight(-20);
+            System.out.println("Don't forget to splash!");
+        }
     }
 
-     public static double getWeightDifference(Cat cat1, Cat cat2) {
+    public static double getWeightDifference(Cat cat1, Cat cat2) {
         double difference = Math.abs(cat1.getWeight() - cat2.getWeight());
         return difference;
     }
 
     public void meow() {
-        setWeight(weight - 1);
-        System.out.println("Meow");
+        if (isAlive()) {
+            addWeight(-100);
+            System.out.println("Meow");
+        }
     }
 
     public void meow(double weight) {
-        setWeight(this.weight - weight);
-        System.out.println("Meow");
-    }
-
-    public void feed(double amount) {
-        weight = weight + amount;
-        foodAmount = amount;
-    }
-
-    public double getFoodAmount() {
-        return foodAmount;
+        if (isAlive()) {
+            addWeight(-weight);
+            System.out.println("Meow");
+        }
     }
 
     public void drink(double amount) {
-        weight = weight + amount;
+        if (isAlive()) {
+            addWeight(amount);
+        }
     }
 
     public String getStatus() {
         if(weight < minWeight) {
-            counter--;
             return "Dead";
         }
         else if(weight > maxWeight) {
-            counter--;
             return "Exploded";
         }
         else if(weight > originWeight) {
@@ -153,5 +147,9 @@ public class Cat
         else {
             return "Playing";
         }
+    }
+
+    public boolean isAlive() {
+        return getWeight() >= minWeight && getWeight() <= maxWeight;
     }
 }
